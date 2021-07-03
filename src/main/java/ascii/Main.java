@@ -15,9 +15,9 @@ public class Main {
         BufferedImage srcImg = null;
         BufferedImage scaledImg = null;
         try {
-            int targetWidth = 200;
-            int targetHeight = 80;
-            srcImg = ImageIO.read(new File("pipe.jpg"));
+            int targetWidth = 100;
+            int targetHeight = 100;
+            srcImg = ImageIO.read(new File("small.jpg"));
             scaledImg = Scalr.resize(srcImg, Scalr.Method.BALANCED, targetWidth, targetHeight);
         } catch (IOException e) {
             System.out.println("Error loading image!");
@@ -39,7 +39,7 @@ public class Main {
         Pixel[][] pixels = new Pixel[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Color c = new Color(srcImg.getRGB(i, j));
+                Color c = new Color(scaledImg.getRGB(j, i));
                 Pixel p = new Pixel(c.getRed(), c.getGreen(), c.getBlue());
                 pixels[i][j] = p;
             }
